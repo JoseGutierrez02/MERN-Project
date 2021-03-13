@@ -1,0 +1,29 @@
+@api_url = http://localhost:3000
+
+### Create a video
+POST {{api_url}}/videos/
+Content-Type: application/json
+
+{
+  "title": "Fazt docker course",
+  "description": "This is a fazt video",
+  "url": "https://www.youtube.com/watch?v=NVvZNmfqg6M"
+}
+
+###
+GET {{api_url}}/videos
+
+###
+GET {{api_url}}/videos/604c089780c08b1648890e28
+
+###
+PUT {{api_url}}/videos/604c089780c08b1648890e28
+Content-Type: application/json
+
+{
+  "title": "Docker practical course",
+  "description": "This is a docker course video"
+}
+
+###
+DELETE {{api_url}}/videos/604c01cf5bee03423c9a1eb8
