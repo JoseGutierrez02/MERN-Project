@@ -9,7 +9,17 @@ const VideoList = () => {
 
   const loadVideos = async () => {
     const res = await videoServie.getVideos()
-    setVideos(res.data.data)
+
+    const fromatedVideos = res.data.map(video => {
+      return {
+        ...video,
+        createdAt: video.createdAt ? new Date(video.createdAt) : new Date(),
+        updatedAt: video.updatedAt ? new Date(video.updatedAt) : new Date(),
+      }
+    })
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+
+    setVideos(fromatedVideos)
   }
 
   useEffect(() => {
@@ -17,9 +27,9 @@ const VideoList = () => {
   }, [])
 
   return (
-    <div>
+    <div className="row">
       {videos.map((video) => {
-        return <VideoItem video={ video }/>
+        return <VideoItem video={ video } key={ video._id } loadVideos={ loadVideos } />
       })}
     </div>
   )

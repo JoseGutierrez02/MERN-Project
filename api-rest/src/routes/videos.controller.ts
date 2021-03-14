@@ -10,24 +10,15 @@ export const createVideo: RequestHandler = async (req, res) => {
   
   const video = new Video(req.body)
   const savedVideo = await video.save()
-  res.status(201).json({
-    data: savedVideo,
-    message: 'video saved',
-  })
+  res.status(201).json(savedVideo)
 }
 
 export const getVideos: RequestHandler = async (req, res) => {
   try {
     const videos = await Video.find()
-    return res.json({
-      data: videos,
-      message: "videos retrieved"
-    })
+    return res.json(videos)
   } catch(error) {
-    res.json({
-      message: 'something went wrong',
-      details: error,
-    })
+    console.log(error)
   }
   
 }
@@ -38,10 +29,7 @@ export const getVideo: RequestHandler = async (req, res) => {
 
   if(!videoFound) return res.status(204).json()
 
-  return res.json({
-    data: videoFound,
-    message: "video retrieved"
-  })
+  return res.json(videoFound)
 }
 
 export const updateVideos: RequestHandler = async (req, res) => {
@@ -51,10 +39,7 @@ export const updateVideos: RequestHandler = async (req, res) => {
 
   if(!videoUpdated) return res.status(204).json()
 
-  res.json({
-    data: videoUpdated,
-    message: 'video updated'
-  })
+  res.json(videoUpdated)
 }
 
 export const deleteVideo: RequestHandler = async (req, res) => {
@@ -63,8 +48,5 @@ export const deleteVideo: RequestHandler = async (req, res) => {
 
   if(!videoFound) return res.status(204).json()
 
-  return res.json({
-    data: videoFound,
-    message: "video deleted"
-  })
+  return res.json(videoFound)
 }

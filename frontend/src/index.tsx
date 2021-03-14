@@ -3,23 +3,27 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from 'react-toastify' 
 
 import Navbar from './components/Navbar/Navbar';
 import VideoList from './components/Videos/VideoList';
 import VideoForm from './components/Videos/VideoForm';
 
-import './index.css';
+import 'react-toastify/dist/ReactToastify.css'
 import 'bootswatch/dist/pulse/bootstrap.min.css'
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <Navbar/>
-      <div className="container">
+      <div className="container p-4">
         <Switch>
           <Route exact path="/" component={ VideoList } />
           <Route exact path="/new-video" component={ VideoForm } />
+          <Route path="/update/:id" component={ VideoForm } />
         </Switch>
+        <ToastContainer />
       </div>
     </BrowserRouter>
   </React.StrictMode>,
