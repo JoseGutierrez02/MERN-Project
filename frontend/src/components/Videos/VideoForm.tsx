@@ -47,12 +47,12 @@ const VideoForm = () => {
 
   useEffect(() => {
     if(params.id) getVideo(params.id)
-  }, [])
+  }, [params.id])
 
   return (
     <div className="row">
       <div className="col-md-4 offset-md-4">
-        <div className="card">
+        <div className="card border-primary">
           <div className="card-body">
             <h3>New Video</h3>
 

@@ -1,4 +1,12 @@
 .video-card:hover {
-  border: 1px solid #333;
+  border: 1px solid #593196;
   cursor: pointer;
+}
+
+.title:hover {
+  color: #593196;
+}
+
+.super-crazy-colors:hover {
+  color: red;
 }
